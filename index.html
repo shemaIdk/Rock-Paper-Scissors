@@ -6,25 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Камінь, ножниці, бумага</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="container max-w-lg mx-auto px-3 h-screen flex flex-col">
-    <header>
-      <h1 class="title text-center text-4xl mt-2">Камінь, ножниці, бумага <span>🇺🇦</span></h1>
-    </header>
+
     <main class="text-xl my-auto">
       <div class="info mb-12">
-        <div class="text-center text-2xl ">Раунд: 
+        <div class="text-center text-3xl ">Раунд: 
           <span class="info__round-num font-bold">0</span>
         </div>
       </div>
-      <div class="players flex justify-between items-center mw-10">
+      <div class="result-container text-center font-bold text-2xl mt-4">
+        <div class="result">Обери дію</div>
+      </div>
+      <div class="players p-4 flex justify-between items-center mw-10">
         <div class="player player--isuser">
           <div class="player__name mb-2 font-bold text-center text-2xl">
             Ти
-          </div>
-          <div >
-            Дія: <span class="player__action"></span>
           </div>
           <div class="">
             Рахунок: <span class="player__score">0</span> 
@@ -34,29 +34,30 @@
           <div class="player__name mb-2 text-center text-2xl">
             Бот
           </div>
-          <div >
-            Дія: <span class="player__action"></span>
-          </div>
           <div>
             Рахунок: <span class="player__score">0</span> 
           </div>
         </div>
       </div>
-      <div class="round-info text-center mt-12">
-        <div class="round-info__result font-bold text-sky-600 text-2xl">Обери дію</div>
-        <div class="round-info__actions flex justify-center mt-4 space-x-2">
-          <div class="round-info__user-action">
-            
+      <div class="round-info text-center mt-8 border border-black p-2">
+        <div class="round-info__actions flex justify-center mb-2 space-x-2">
+          <div class="round-info__user">
+            <div class="round-info__user-pref">
+              Ти обрав:
+              <span class="round-info__user-action font-bold">...</span>
+            </div>
           </div>
-          <span class="round-info__result-symbol">
-            
-          </span>
-          <div class="round-info__bot-action">
-            
+          <div class="round-info__bot">
+            <div class="round-info__bot-pref">
+              Бот обрав:
+              <span class="round-info__bot-action font-bold">...</span>
+            </div>
           </div>
         </div>
+        <a href="rules.html" class="round-info__explain text-2xl text-red-600 underline mt-4">
+        </a>
       </div>  
-      <div class="player-control flex justify-center space-x-2 mt-12 text-xl">
+      <div class="player-control flex justify-center space-x-2 mt-10 text-xl">
         <button class="player-control__btn bg-sky-600 text-white p-2 active:opacity-90" data-action="камінь">
           Камінь
         </button>
@@ -70,18 +71,21 @@
     </main>
     <footer class="mt-auto">
       <div class="socials text-center flex justify-center p-2 items-center space-x-2">
-        <a class="socials__link w-16 transtion-transform duration-100 hover:scale-110" target="_blank" href="https://www.instagram.com/artemhlam/">
+        <a class="socials__link w-14 transtion-transform duration-100 hover:scale-110 md:w-16" target="_blank" href="https://www.instagram.com/artemhlam/">
           <img src="./assets/instagram-icon.svg" alt="Instagram icon" class="socials__link-icon">
         </a>
-        <a class="socials__link w-16 transtion-transform duration-100 hover:scale-110" target="_blank" href="https://github.com/shemaIdk">
+        <a class="socials__link w-14 transtion-transform duration-100 hover:scale-110 md:w-16" target="_blank" href="https://github.com/shemaIdk">
           <img src="./assets/github-icon.svg" alt="Github icon" class="socials__link-icon">
         </a>
-        <a class="socials__link w-16 transtion-transform duration-100 hover:scale-110" target="_blank" href="https://telegram.me/artemhlam">
+        <a class="socials__link w-14 transtion-transform duration-100 hover:scale-110 md:w-16" target="_blank" href="https://telegram.me/artemhlam">
           <img src="./assets/telegram-icon.svg" alt="Telegram icon" class="socials__link-icon">
         </a>	
       </div>
     </footer>
   </div>
+  <a href="rules.html" class="cursor-pointer rounded-full absolute top-3 right-3 hover:scale-110">
+    <i class="fa-solid fa-circle-info text-4xl md:text-5xl"></i>
+  </a>
 </body>
 <script src="scripts/script.js"></script>
 </html>

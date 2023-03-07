@@ -47,13 +47,24 @@ function playRound(userAction) {
     userAction,
   });
 
-  const {result: winner} = info;
+  const {result: winner, wAction, lAction} = info;
 
   if(winner == Players.User) userScore++;
   else if(winner == Players.Bot) botScore++;
 
   roundNum++;
-  showResult(winner, userAction, botAction)
+  showResult(winner, userAction, botAction, wAction, lAction)
+
+  Array.from(playerControlEl.children).forEach(el => {
+    el.setAttribute('disabled', true);
+    el.style.opacity = 0.5;
+  });
+  setTimeout(() => {
+    Array.from(playerControlEl.children).forEach(el => {
+      el.removeAttribute('disabled')
+      el.style.opacity = 1;
+    })
+  }, 1000);
 }
 
 function getWinner(arr) {
@@ -78,14 +89,14 @@ function getWinner(arr) {
     if(userAction == wAction && botAction == lAction) {
       return {
         result: Results.User,
-        userAction,
-        botAction,
+        wAction,
+        lAction,
       };
     } else if(botAction == wAction && userAction == lAction){
       return {
         result: Results.Bot,
-        userAction,
-        botAction,
+        wAction,
+        lAction,
       };
     }
   }
@@ -96,21 +107,24 @@ function getBotsAction() {
   return actions[Math.floor(Math.random() * actions.length)]
 }
 
-function showResult(result, userAction, botAction) {
-  userEl.querySelector('.player__action').textContent = userAction;
-  botEl.querySelector('.player__action').textContent = botAction;
-
+function showResult(result, userAction, botAction, wAction, lAction) {
   userEl.querySelector('.player__score').textContent = userScore;
   botEl.querySelector('.player__score').textContent = botScore;
 
   document.querySelector('.info__round-num').textContent = roundNum;
-
+  document.querySelector('.result').textContent = result == Results.Tie ? 'Нічия ...' : result == Results.User ? 'Ти виграв !' : 'Бот виграв ! ;((';
+  
   const roundInfoEl = document.querySelector('.round-info');
   
-  roundInfoEl.querySelector('.round-info__result').textContent = result == Results.Tie ? 'Нічия ...' : result == Results.User ? 'Ти виграв !' : 'Бот виграв ! ;((';
   roundInfoEl.querySelector('.round-info__user-action').textContent = userAction;
-  roundInfoEl.querySelector('.round-info__result-symbol').textContent = result == Results.Tie ? '=' : result == Results.User ? '>' : '<';
   roundInfoEl.querySelector('.round-info__bot-action').textContent = botAction;
+
+  const explainEl = roundInfoEl.querySelector('.round-info__explain');
+  if(result == Results.Tie) {
+    explainEl.textContent = 'Одинакові дії'
+  } else {
+    explainEl.textContent = `${wAction} б'є ${lAction}`; 
+  }
 }
 
 reset();
