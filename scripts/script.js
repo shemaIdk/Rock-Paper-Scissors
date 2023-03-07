@@ -105,11 +105,12 @@ function showResult(result, userAction, botAction) {
 
   document.querySelector('.info__round-num').textContent = roundNum;
 
-  const resultRoundInfoEl = document.querySelector('.round-info__result');
-
-  if(result == Players.User) resultRoundInfoEl.textContent = 'Ти виграв !';
-  else if(result == Players.Bot) resultRoundInfoEl.textContent = 'Бот виграв ! ;((';
-  else if(result == Results.Tie) resultRoundInfoEl.textContent = 'Нічия ...';
+  const roundInfoEl = document.querySelector('.round-info');
+  
+  roundInfoEl.querySelector('.round-info__result').textContent = result == Results.Tie ? 'Нічия ...' : result == Results.User ? 'Ти виграв !' : 'Бот виграв ! ;((';
+  roundInfoEl.querySelector('.round-info__user-action').textContent = userAction;
+  roundInfoEl.querySelector('.round-info__result-symbol').textContent = result == Results.Tie ? '=' : result == Results.User ? '>' : '<';
+  roundInfoEl.querySelector('.round-info__bot-action').textContent = botAction;
 }
 
 reset();
