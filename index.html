@@ -5,8 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Камінь, ножниці, бумага</title>
-
-
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -15,8 +13,8 @@
       <h1 class="title text-center text-4xl mt-2">Камінь, ножниці, бумага <span>🇺🇦</span></h1>
     </header>
     <main class="text-xl my-auto">
-      <div class="info mb-8">
-        <div class="text-center">Раунд: 
+      <div class="info mb-12">
+        <div class="text-center text-2xl ">Раунд: 
           <span class="info__round-num font-bold">0</span>
         </div>
       </div>
@@ -44,10 +42,21 @@
           </div>
         </div>
       </div>
-      <div class="round-info text-center mt-2">
-        <div class="round-info__result font-bold text-sky-600">Обери дію</div>
+      <div class="round-info text-center mt-12">
+        <div class="round-info__result font-bold text-sky-600 text-2xl">Обери дію</div>
+        <div class="round-info__actions flex justify-center mt-4 space-x-2">
+          <div class="round-info__user-action">
+            
+          </div>
+          <span class="round-info__result-symbol">
+            
+          </span>
+          <div class="round-info__bot-action">
+            
+          </div>
+        </div>
       </div>  
-      <div class="player-control flex justify-center space-x-2 mt-16 text-xl">
+      <div class="player-control flex justify-center space-x-2 mt-12 text-xl">
         <button class="player-control__btn bg-sky-600 text-white p-2 active:opacity-90" data-action="камінь">
           Камінь
         </button>
